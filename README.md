@@ -27,10 +27,44 @@ npm install --save-dev eslint-formatter-beauty
 
 ## Usage
 
-Run command:
+### ESLint CLI:
 
 ```
 eslint -f=beauty path/to/your/file.js
+```
+
+### gulp-eslint
+
+```js
+const gulp = require('gulp')
+const eslint = require('gulp-eslint')
+
+gulp.task('lint', () =>
+	gulp.src('file.js')
+		.pipe(eslint())
+		.pipe(eslint.format('beauty'))
+)
+```
+
+### eslint-loader
+
+```js
+module.exports = {
+	// ... other options
+	module: {
+		rules: [
+      // ... other options
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				loader: 'eslint-loader',
+				options: {
+					formatter: require('eslint-formatter-beauty')
+				}
+			}
+		]
+	}
+}
 ```
 
 ## License
