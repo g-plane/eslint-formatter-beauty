@@ -10,6 +10,8 @@ function padStart (text, length) {
 }
 
 module.exports = results => {
+  let output = '\n'
+
   results.forEach(result => {
     if (result.messages.length === 0) {
       return
@@ -19,19 +21,14 @@ module.exports = results => {
       return codeExcerpt(result.source, lineNum, { around: 2 })
     }
 
-    process.stdout.write('\n')
-    process.stdout.write(chalk.underline(
-      result.filePath.replace(process.cwd(), '.')
-    ))
-    process.stdout.write('\n')
+    output += chalk.underline(result.filePath.replace(process.cwd(), '.'))
+    output += '\n'
 
     result.messages.forEach(message => {
-      process.stdout.write(
-        message.severity === 2
-          ? chalk.red(`  Error: ${message.message} `)
-          : chalk.yellow(`  Warning: ${message.message} `)
-      )
-      process.stdout.write(chalk.gray(`(${message.ruleId})\n`))
+      output += message.severity === 2
+        ? chalk.red(`  Error: ${message.message} `)
+        : chalk.yellow(`  Warning: ${message.message} `)
+      output += chalk.gray(`(${message.ruleId})\n`)
 
       const rawLines = getLines(message.line)
       const padding = rawLines[rawLines.length - 1].line.toString().length + 6
@@ -81,9 +78,9 @@ module.exports = results => {
         return painted
       })
 
-      process.stdout.write(lines.join('\n'))
+      output += lines.join('\n')
 
-      process.stdout.write('\n\n')
+      output += '\n\n'
     })
   })
 
@@ -94,28 +91,25 @@ module.exports = results => {
     .map(result => result.warningCount)
     .reduce((acc, cur) => acc + cur, 0)
   if (errorsCount > 0) {
-    console.log(
-      logSymbols.error,
-      chalk.red(
-        ` ${errorsCount} error${errorsCount === 1 ? '' : 's'}`
-      )
-    )
+    output += logSymbols.error
+      + chalk.red(`  ${errorsCount} error${errorsCount === 1 ? '' : 's'}`)
   }
   if (warningsCount > 0) {
-    console.log(
-      logSymbols.warning,
-      chalk.yellow(
-        ` ${warningsCount} warning${warningsCount === 1 ? '' : 's'}`
+    if (errorsCount > 0) {
+      output += '\n'
+    }
+
+    output += logSymbols.warning
+      + chalk.yellow(
+        `  ${warningsCount} warning${warningsCount === 1 ? '' : 's'}`
       )
-    )
   }
   if (errorsCount === 0 && warningsCount === 0) {
-    console.log(
-      '\n',
-      logSymbols.success,
-      chalk.green(' Congrats! Your code looks well.')
-    )
+    output += logSymbols.success
+      + chalk.green('  Congrats! Your code looks well.')
   }
 
-  process.stdout.write('\n')
+  output += '\n'
+
+  return output
 }
