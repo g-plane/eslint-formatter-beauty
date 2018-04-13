@@ -1,0 +1,77 @@
+[
+  {
+    "filePath": "/Volumes/Programming/Node/eslint-formatter-beauty/fixture.js",
+    "messages": [
+      {
+        "ruleId": "no-var",
+        "severity": 2,
+        "message": "Unexpected var, use let or const instead.",
+        "line": 1,
+        "column": 1,
+        "nodeType": "VariableDeclaration",
+        "source": "var a = 0;",
+        "endLine": 1,
+        "endColumn": 11,
+        "fix": {
+          "range": [
+            0,
+            3
+          ],
+          "text": "let"
+        }
+      },
+      {
+        "ruleId": "no-unused-vars",
+        "severity": 1,
+        "message": "'a' is assigned a value but never used.",
+        "line": 1,
+        "column": 5,
+        "nodeType": "Identifier",
+        "source": "var a = 0;",
+        "endLine": 1,
+        "endColumn": 6
+      },
+      {
+        "ruleId": "no-multiple-empty-lines",
+        "severity": 2,
+        "message": "More than 2 blank lines not allowed.",
+        "line": 2,
+        "column": 1,
+        "nodeType": "Program",
+        "source": "",
+        "endLine": 9,
+        "endColumn": 1,
+        "fix": {
+          "range": [
+            11,
+            16
+          ],
+          "text": ""
+        }
+      },
+      {
+        "ruleId": "prefer-arrow-callback",
+        "severity": 2,
+        "message": "Unexpected function expression.",
+        "line": 9,
+        "column": 12,
+        "nodeType": "FunctionExpression",
+        "source": "[].forEach(function () {",
+        "endLine": 11,
+        "endColumn": 2,
+        "fix": {
+          "range": [
+            29,
+            49
+          ],
+          "text": "() => {\n  //\n}"
+        }
+      }
+    ],
+    "errorCount": 3,
+    "warningCount": 1,
+    "fixableErrorCount": 3,
+    "fixableWarningCount": 0,
+    "source": "var a = 0;\n\n\n\n\n\n\n\n[].forEach(function () {\n  //\n})\n"
+  }
+]

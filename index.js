@@ -28,7 +28,8 @@ module.exports = results => {
       output += message.severity === 2
         ? chalk.red(`  Error: ${message.message} `)
         : chalk.yellow(`  Warning: ${message.message} `)
-      output += chalk.gray(`(${message.ruleId})\n`)
+      output += chalk.gray(`(${message.ruleId})`)
+      output += '\n'
 
       const rawLines = getLines(message.line)
       const padding = rawLines[rawLines.length - 1].line.toString().length + 6
