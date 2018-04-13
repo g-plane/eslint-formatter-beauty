@@ -1,0 +1,7 @@
+coverage/
+.eslintrc.json
+.travis.yml
+fixture.json
+screenshot.png
+test.js
+yarn.lock
