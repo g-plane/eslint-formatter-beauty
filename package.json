@@ -1,5 +1,6 @@
 {
   "name": "eslint-formatter-beauty",
+  "description": "Beautiful ESLint custom formatter.",
   "version": "0.1.0",
   "main": "index.js",
   "author": "Pig Fang <g-plane@hotmail.com>",
