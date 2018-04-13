@@ -2,6 +2,8 @@
 
 Beautiful ESLint custom formatter.
 
+![](screenshot.png)
+
 ## Installation
 
 Using Yarn:
