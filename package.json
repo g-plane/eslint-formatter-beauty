@@ -1,0 +1,25 @@
+{
+  "name": "eslint-formatter-beauty",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "Pig Fang <g-plane@hotmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/g-plane/eslint-formatter-beauty"
+  },
+  "license": "Apache-2.0",
+  "private": false,
+  "scripts": {
+    "test": "exit 0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-gplane": "^1.5.0"
+  },
+  "dependencies": {
+    "ansi-styles": "^3.2.1",
+    "chalk": "^2.3.2",
+    "code-excerpt": "^2.1.1",
+    "log-symbols": "^2.2.0"
+  }
+}
