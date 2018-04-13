@@ -10,7 +10,7 @@ const fixture = require('./fixture.json')
 const output = m(fixture)
 
 // File name
-assert(output.includes(chalk.underline('./fixture.js')))
+assert(output.includes('fixture.js'))
 
 // Linter message
 assert(output.includes(chalk.red(
