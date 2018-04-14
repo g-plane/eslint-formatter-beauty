@@ -67,6 +67,10 @@ module.exports = {
 }
 ```
 
+## Related Projects
+
+- [tslint-formatter-beauty](https://github.com/g-plane/tslint-formatter-beauty)
+
 ## License
 
 Apache License 2.0
