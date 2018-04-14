@@ -11,6 +11,7 @@
   "license": "Apache-2.0",
   "private": false,
   "scripts": {
+    "lint": "eslint -f='./index.js' *.js",
     "test": "node test.js",
     "coverage": "nyc --reporter=lcov yarn test"
   },
