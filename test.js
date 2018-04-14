@@ -42,4 +42,17 @@ assert(output.includes(chalk.gray('   11 | ')))
 assert(output.includes(logSymbols.error + chalk.red('  3 errors')))
 assert(output.includes(logSymbols.warning + chalk.yellow('  1 warning')))
 
+// Success example
+const successFixture = {
+  filePath: '/Volumes/Programming/Node/eslint-formatter-beauty/ok.js',
+  messages: [],
+  errorCount: 0,
+  warningCount: 0,
+  fixableErrorCount: 0,
+  fixableWarningCount: 0,
+  source: 'console.log()'
+}
+const successOutput = m([successFixture])
+assert.strictEqual(successOutput, '')
+
 console.log(chalk.green('All tests passed.'))
