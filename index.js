@@ -112,9 +112,9 @@ module.exports = results => {
         `  ${warningsCount} warning${warningsCount === 1 ? '' : 's'}`
       )
   }
+
   if (errorsCount === 0 && warningsCount === 0) {
-    output += logSymbols.success
-      + chalk.green('  Congrats! Your code looks well.')
+    return ''   // Without errors and warnings, be silent
   }
 
   output += '\n'
