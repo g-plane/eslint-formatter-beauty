@@ -42,7 +42,7 @@ const eslint = require('gulp-eslint')
 gulp.task('lint', () =>
   gulp.src('file.js')
     .pipe(eslint())
-    .pipe(eslint.format('beauty'))
+    .pipe(eslint.format(require('eslint-formatter-beauty')))
 )
 ```
 
