@@ -40,9 +40,9 @@ const gulp = require('gulp')
 const eslint = require('gulp-eslint')
 
 gulp.task('lint', () =>
-	gulp.src('file.js')
-		.pipe(eslint())
-		.pipe(eslint.format('beauty'))
+  gulp.src('file.js')
+    .pipe(eslint())
+    .pipe(eslint.format('beauty'))
 )
 ```
 
@@ -50,20 +50,20 @@ gulp.task('lint', () =>
 
 ```js
 module.exports = {
-	// ... other options
-	module: {
-		rules: [
+  // ... other options
+  module: {
+    rules: [
       // ... other options
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				loader: 'eslint-loader',
-				options: {
-					formatter: require('eslint-formatter-beauty')
-				}
-			}
-		]
-	}
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: {
+          formatter: require('eslint-formatter-beauty')
+        }
+      }
+    ]
+  }
 }
 ```
 
