@@ -1,6 +1,6 @@
 {
   "name": "eslint-formatter-beauty",
-  "description": "Beautiful ESLint custom formatter.",
+  "description": "Beautiful ESLint formatter.",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Pig Fang <g-plane@hotmail.com>",
@@ -10,6 +10,13 @@
   },
   "license": "Apache-2.0",
   "private": false,
+  "keywords": [
+    "beauty",
+    "beautiful",
+    "codeframe",
+    "eslint",
+    "eslint-formatter"
+  ],
   "scripts": {
     "lint": "eslint -f='./index.js' *.js",
     "test": "node test.js",

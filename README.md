@@ -1,6 +1,6 @@
 # eslint-formatter-beauty
 
-Beautiful ESLint custom formatter.
+Beautiful ESLint formatter.
 
 ![](screenshot.png)
 
