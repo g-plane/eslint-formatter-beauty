@@ -21,6 +21,7 @@
     "nyc": "^11.6.0"
   },
   "dependencies": {
+    "@babel/highlight": "^7.0.0-beta.44",
     "ansi-styles": "^3.2.1",
     "chalk": "^2.3.2",
     "code-excerpt": "^2.1.1",

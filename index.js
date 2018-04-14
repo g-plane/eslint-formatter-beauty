@@ -2,6 +2,7 @@ const codeExcerpt = require('code-excerpt')
 const style = require('ansi-styles')
 const chalk = require('chalk')['default']
 const logSymbols = require('log-symbols')
+const highlight = require('@babel/highlight')['default']
 
 function padStart (text, length) {
   return text.length >= length
@@ -42,12 +43,12 @@ module.exports = results => {
         const painter = text => (message.severity === 2
           ? chalk.bgRed(chalk.white(text))
           : chalk.bgYellow(chalk.black(text)))
-        painter.open = message.severity === 2
+        painter.open = `/*****${message.severity === 2
           ? style.bgRed.open + style.white.open
-          : style.bgYellow.open + style.black.open
-        painter.close = message.severity === 2
+          : style.bgYellow.open + style.black.open}`
+        painter.close = `${message.severity === 2
           ? style.bgRed.close + style.white.close
-          : style.bgYellow.close + style.black.close
+          : style.bgYellow.close + style.black.close}*****/`
 
         if (line.line === message.line) {
           const start = message.column
@@ -61,20 +62,23 @@ module.exports = results => {
             chars.push(painter.close)
           }
 
-          painted += chars.join('')
+          painted += highlight(chars.join(''))
         } else if (message.endLine
           && line.line > message.line
           && line.line < message.endLine) {
-          painted += painter(line.value)
+          painted += highlight(`/*****${painter(line.value)}*****/`)
         } else if (message.endLine && line.line === message.endLine) {
           const chars = line.value.split('')
           chars.unshift(painter.open)
           chars.splice(message.endColumn, 0, painter.close)
 
-          painted += chars.join('')
+          painted += highlight(chars.join(''))
         } else {
-          painted += line.value
+          painted += highlight(line.value)
         }
+
+        painted = painted.replace(/\/\*\*\*\*\*/g, '')
+          .replace(/\*\*\*\*\*\//g, '')
 
         return painted
       })

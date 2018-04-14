@@ -24,16 +24,11 @@ assert(output.includes(chalk.yellow(
 assert(output.includes(chalk.gray('(no-var)')))
 
 // Code highlight
-assert(output.includes(
-  style.bgRed.open + style.white.open
-  + 'var a = 0;'
-  + style.bgRed.close + style.white.close
-))
-assert(output.includes(
-  style.bgYellow.open + style.black.open
-  + 'a'
-  + style.bgYellow.close + style.black.close
-))
+assert(output.includes(style.bgRed.open + style.white.open))
+assert(output.includes('var a = 0;'))
+assert(output.includes(style.bgRed.close + style.white.close))
+assert(output.includes(style.bgYellow.open + style.black.open))
+assert(output.includes(style.bgYellow.close + style.black.close))
 
 // Line number
 assert(output.includes(chalk.gray('   1 | ')))
