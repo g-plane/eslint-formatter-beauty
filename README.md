@@ -69,6 +69,6 @@ module.exports = {
 
 ## License
 
-MIT License
+Apache License 2.0
 
 Copyright (c) 2018-present Pig Fang
