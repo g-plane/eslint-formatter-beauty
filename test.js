@@ -41,6 +41,13 @@ assert(output.includes(chalk.gray('   11 | ')))
 // Summary
 assert(output.includes(logSymbols.error + chalk.red('  3 errors')))
 assert(output.includes(logSymbols.warning + chalk.yellow('  1 warning')))
+const noSummaryOutput = m(fixture, { noSummary: true })
+assert(!noSummaryOutput.includes(
+  logSymbols.error + chalk.red('  3 errors')
+))
+assert(!noSummaryOutput.includes(
+  logSymbols.warning + chalk.yellow('  1 warning')
+))
 
 // Success example
 const successFixture = {

@@ -10,7 +10,7 @@ function padStart (text, length) {
     : `${' '.repeat(length - text.length)}${text}`
 }
 
-module.exports = results => {
+module.exports = (results, options) => {
   let output = '\n'
 
   results.forEach(result => {
@@ -99,6 +99,15 @@ module.exports = results => {
   const warningsCount = results
     .map(result => result.warningCount)
     .reduce((acc, cur) => acc + cur, 0)
+
+  if (errorsCount === 0 && warningsCount === 0) {
+    return ''   // Without errors and warnings, be silent
+  }
+
+  if (options && options.noSummary) {
+    return output
+  }
+
   if (errorsCount > 0) {
     output += logSymbols.error
       + chalk.red(`  ${errorsCount} error${errorsCount === 1 ? '' : 's'}`)
@@ -112,10 +121,6 @@ module.exports = results => {
       + chalk.yellow(
         `  ${warningsCount} warning${warningsCount === 1 ? '' : 's'}`
       )
-  }
-
-  if (errorsCount === 0 && warningsCount === 0) {
-    return ''   // Without errors and warnings, be silent
   }
 
   output += '\n'
