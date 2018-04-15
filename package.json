@@ -1,7 +1,7 @@
 {
   "name": "eslint-formatter-beauty",
   "description": "Beautiful ESLint formatter.",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "index.js",
   "author": "Pig Fang <g-plane@hotmail.com>",
   "repository": {
