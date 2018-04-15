@@ -19,7 +19,8 @@ module.exports = results => {
     }
 
     function getLines (lineNum) {
-      return codeExcerpt(result.source, lineNum, { around: 2 })
+      const source = result.output || result.source
+      return codeExcerpt(source, lineNum, { around: 2 })
     }
 
     output += chalk.underline(result.filePath.replace(process.cwd(), '.'))
