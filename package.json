@@ -17,6 +17,7 @@
     "eslint",
     "eslint-formatter"
   ],
+  "typings": "index.d.ts",
   "scripts": {
     "lint": "eslint -f='./index.js' *.js",
     "test": "node test.js",
