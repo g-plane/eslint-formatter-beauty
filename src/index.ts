@@ -1,16 +1,20 @@
-const codeExcerpt = require('code-excerpt')
-const style = require('ansi-styles')
-const chalk = require('chalk')['default']
-const logSymbols = require('log-symbols')
-const highlight = require('@babel/highlight')['default']
+import * as eslint from 'eslint'
+import * as style from 'ansi-styles'
+import chalk from 'chalk'
+import codeExcerpt = require('code-excerpt')
+import * as logSymbols from 'log-symbols'
+import highlight from '@babel/highlight'
 
-function padStart (text, length) {
+function padStart (text: string, length: number): string {
   return text.length >= length
     ? text
     : `${' '.repeat(length - text.length)}${text}`
 }
 
-module.exports = (results, options) => {
+function format (
+  results: eslint.CLIEngine.LintResult[],
+  options?: { noSummary?: boolean }
+) {
   let output = '\n'
 
   results.forEach(result => {
@@ -18,8 +22,8 @@ module.exports = (results, options) => {
       return
     }
 
-    function getLines (lineNum) {
-      const source = result.output || result.source
+    function getLines (lineNum: number) {
+      const source = result.output || result.source || ''
       return codeExcerpt(source, lineNum, { around: 2 })
     }
 
@@ -44,26 +48,28 @@ module.exports = (results, options) => {
             padding
           ))
 
-          const painter = text => (message.severity === 2
+          const painter = (text: string) => (message.severity === 2
             ? chalk.bgRed(chalk.white(text))
             : chalk.bgYellow(chalk.black(text)))
-          painter.open = `/*****${message.severity === 2
-            ? style.bgRed.open + style.white.open
-            : style.bgYellow.open + style.black.open}`
-          painter.close = `${message.severity === 2
-            ? style.bgRed.close + style.white.close
-            : style.bgYellow.close + style.black.close}*****/`
+          const painterSign = {
+            open: `/*****${message.severity === 2
+              ? style.bgRed.open + style.white.open
+              : style.bgYellow.open + style.black.open}`,
+            close: `${message.severity === 2
+              ? style.bgRed.close + style.white.close
+              : style.bgYellow.close + style.black.close}*****/`
+          }
 
           if (line.line === message.line) {
             const start = message.column
             const end = message.endColumn || start
 
             const chars = line.value.split('')
-            chars.splice(start - 1, 0, painter.open)
+            chars.splice(start - 1, 0, painterSign.open)
             if (message.line === message.endLine || !message.endLine) {
-              chars.splice(start === end ? end + 1 : end, 0, painter.close)
+              chars.splice(start === end ? end + 1 : end, 0, painterSign.close)
             } else {
-              chars.push(painter.close)
+              chars.push(painterSign.close)
             }
 
             painted += highlight(chars.join(''))
@@ -73,8 +79,8 @@ module.exports = (results, options) => {
             painted += highlight(`/*****${painter(line.value)}*****/`)
           } else if (message.endLine && line.line === message.endLine) {
             const chars = line.value.split('')
-            chars.unshift(painter.open)
-            chars.splice(message.endColumn, 0, painter.close)
+            chars.unshift(painterSign.open)
+            chars.splice(message.endColumn!, 0, painterSign.close)
 
             painted += highlight(chars.join(''))
           } else {
@@ -127,3 +133,5 @@ module.exports = (results, options) => {
 
   return output
 }
+
+export = format

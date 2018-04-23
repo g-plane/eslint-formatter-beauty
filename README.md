@@ -4,10 +4,6 @@ Beautiful ESLint formatter.
 
 ![](screenshot.png)
 
-
-![Travis](https://img.shields.io/travis/g-plane/eslint-formatter-beauty.svg?style=flat-square)
-![Codecov](https://img.shields.io/codecov/c/github/g-plane/eslint-formatter-beauty.svg?style=flat-square)
-![license](https://img.shields.io/github/license/g-plane/eslint-formatter-beauty.svg?style=flat-square)
 ![npm](https://img.shields.io/npm/v/eslint-formatter-beauty.svg?style=flat-square)
 ![npm](https://img.shields.io/npm/dm/eslint-formatter-beauty.svg?style=flat-square)
 
@@ -69,7 +65,7 @@ module.exports = {
 
 ## Related Projects
 
-- [tslint-formatter-beauty](https://github.com/g-plane/tslint-formatter-beauty)
+- [tslint-formatter-beauty](https://github.com/g-plane/methane/tree/master/packages/tslint-formatter-beauty)
 
 ## License
 

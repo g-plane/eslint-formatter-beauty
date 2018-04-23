@@ -5,3 +5,4 @@ fixture.json
 screenshot.png
 test.js
 yarn.lock
+shims.d.ts

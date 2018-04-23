@@ -2,11 +2,12 @@
   "name": "eslint-formatter-beauty",
   "description": "Beautiful ESLint formatter.",
   "version": "1.2.1",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "author": "Pig Fang <g-plane@hotmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/g-plane/eslint-formatter-beauty"
+    "url": "https://github.com/g-plane/methane"
   },
   "license": "Apache-2.0",
   "private": false,
@@ -17,17 +18,9 @@
     "eslint",
     "eslint-formatter"
   ],
-  "typings": "index.d.ts",
   "scripts": {
-    "lint": "eslint -f='./index.js' *.js",
-    "test": "node test.js",
-    "coverage": "nyc --reporter=lcov yarn test"
-  },
-  "devDependencies": {
-    "codecov": "^3.0.0",
-    "eslint": "^4.19.1",
-    "eslint-config-gplane": "^1.5.0",
-    "nyc": "^11.6.0"
+    "build": "tsc -p .",
+    "prepublishOnly": "yarn build"
   },
   "dependencies": {
     "@babel/highlight": "^7.0.0-beta.44",
