@@ -5,13 +5,13 @@ import codeExcerpt = require('code-excerpt')
 import * as logSymbols from 'log-symbols'
 import highlight from '@babel/highlight'
 
-function padStart (text: string, length: number): string {
+function padStart(text: string, length: number): string {
   return text.length >= length
     ? text
     : `${' '.repeat(length - text.length)}${text}`
 }
 
-function format (
+function format(
   results: eslint.CLIEngine.LintResult[],
   options?: { noSummary?: boolean }
 ) {
@@ -22,7 +22,7 @@ function format (
       return
     }
 
-    function getLines (lineNum: number) {
+    function getLines(lineNum: number) {
       const source = result.output || result.source || ''
       return codeExcerpt(source, lineNum, { around: 2 })
     }

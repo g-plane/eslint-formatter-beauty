@@ -1,5 +1,5 @@
 declare module 'code-excerpt' {
-  function fn (
+  function fn(
     source: string,
     line: number,
     options?: { around?: number }
