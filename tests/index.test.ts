@@ -2,6 +2,7 @@ import chalk from 'chalk'
 import * as style from 'ansi-styles'
 import * as logSymbols from 'log-symbols'
 import formatter = require('../src')
+// @ts-ignore
 import fixture = require('./fixture.json')
 
 test('no linting errors', () => {
