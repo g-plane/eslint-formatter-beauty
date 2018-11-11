@@ -4,6 +4,7 @@ import * as logSymbols from 'log-symbols'
 import formatter = require('../src')
 // @ts-ignore
 import fixture = require('./fixture.json')
+import 'jest-extended'
 
 test('no linting errors', () => {
   const successFixture = {

@@ -27,17 +27,8 @@
     "test": "jest"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "jest-extended",
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "js",
-      "json",
-      "node"
-    ]
+    "preset": "ts-jest",
+    "setupTestFrameworkScriptFile": "jest-extended"
   },
   "dependencies": {
     "@babel/highlight": "^7.0.0-beta.44",
