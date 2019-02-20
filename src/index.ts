@@ -1,7 +1,7 @@
 import * as eslint from 'eslint'
 import * as style from 'ansi-styles'
 import chalk from 'chalk'
-import codeExcerpt = require('code-excerpt')
+import codeExcerpt from 'code-excerpt'
 import * as logSymbols from 'log-symbols'
 import highlight from '@babel/highlight'
 
@@ -134,4 +134,5 @@ function format(
   return output
 }
 
-export = format
+module.exports = format
+export default format

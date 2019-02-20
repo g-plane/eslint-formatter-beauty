@@ -1,10 +1,10 @@
 import chalk from 'chalk'
 import * as style from 'ansi-styles'
 import * as logSymbols from 'log-symbols'
-import formatter = require('../src')
-// @ts-ignore
-import fixture = require('./fixture.json')
+import formatter from '../src'
 import 'jest-extended'
+
+const fixture = require('./fixture.json')
 
 test('no linting errors', () => {
   const successFixture = {

@@ -23,12 +23,12 @@
   "scripts": {
     "build": "tsc -p .",
     "prepublishOnly": "yarn build",
-    "lint": "tslint -p .",
-    "test": "jest"
+    "test": "tsc -p . --noEmit && jest"
   },
   "jest": {
-    "preset": "ts-jest",
-    "setupTestFrameworkScriptFile": "jest-extended"
+    "setupFilesAfterEnv": [
+      "jest-extended"
+    ]
   },
   "dependencies": {
     "@babel/highlight": "^7.0.0-beta.44",
@@ -38,14 +38,13 @@
     "log-symbols": "^2.2.0"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.2.0",
+    "@babel/preset-typescript": "^7.3.3",
     "@types/eslint": "^4.16.3",
     "@types/jest": "^23.3.1",
     "@types/node": "^10.9.4",
-    "jest": "^23.5.0",
+    "jest": "^24.1.0",
     "jest-extended": "^0.8.1",
-    "ts-jest": "^23.1.4",
-    "tslint": "^5.11.0",
-    "tslint-config-gplane": "^3.0.0",
-    "typescript": "^3.0.3"
+    "typescript": "^3.3.3"
   }
 }
